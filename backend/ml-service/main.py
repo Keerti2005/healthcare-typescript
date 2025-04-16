@@ -1,31 +1,32 @@
-# ml-service/main.py
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 import joblib
 import numpy as np
 import pandas as pd
-import uvicorn
+import os
 
-# Load model
-model = joblib.load("backend/ml-service/model.pkl")
-
-# Load symptom list (you need this to convert input into a feature vector)
-SYMPTOMS = list(pd.read_csv("backend/ml-service/updated_symptom_dataset.csv").drop("Diagnosis", axis=1).columns)
-
+# Setup FastAPI app
 app = FastAPI()
-from fastapi.middleware.cors import CORSMiddleware
 
+# Enable CORS (update if needed)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # Frontend URL
+    allow_origins=["http://localhost:5173"],  # Your frontend
     allow_credentials=True,
-    allow_methods=["*"],  # Allows all HTTP methods
-    allow_headers=["*"],  # Allows all headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
+# Load model
+model_path = os.path.join(os.path.dirname(__file__), "model.pkl")
+model = joblib.load(model_path)
 
+# Load symptom list (not directly used here, just for reference)
+symptom_file = os.path.join(os.path.dirname(__file__), "predict.csv")
+SYMPTOMS = list(pd.read_csv(symptom_file).drop("Diagnosis", axis=1).columns)
 
-# Define request body schema
+# Define input schema
 class SymptomInput(BaseModel):
     Fever: int
     Cough: int
@@ -39,6 +40,7 @@ class SymptomInput(BaseModel):
     Chills: int
     Diarrhea: int
 
+# Predict route
 @app.post("/predict")
 def predict(symptoms: SymptomInput):
     data = np.array([[ 
@@ -57,5 +59,7 @@ def predict(symptoms: SymptomInput):
     prediction = model.predict(data)
     return {"prediction": prediction[0]}
 
+# Run server
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=5001)
+    import uvicorn
+    uvicorn.run("main:app", host="0.0.0.0", port=5001, reload=True)
