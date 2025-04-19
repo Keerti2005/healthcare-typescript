@@ -8,7 +8,7 @@ import ChatBot from './pages/GptChatPage';
 import DoctorAppointmentForm from './pages/doctor-connect'; // Correct the path
 import ChatBotIcon from './components/ChatBotIcon';
 import SymptomPrediction from './pages/symptom-checker'; // Adjust the path
-
+import Home from './pages/Home';
 const App = () => {
   return (
     <Router>
@@ -18,7 +18,7 @@ const App = () => {
           <AppSidebarNav />
           <div className="p-4 lg:p-6">
             <Routes>
-              <Route path="/" element={<Heading>Welcome to the Home Page</Heading>} />
+              <Route path="/" element={<Home />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/chatbot" element={<ChatBot />} />
               <Route path="/doctor-connect" element={<DoctorAppointmentForm />} />
