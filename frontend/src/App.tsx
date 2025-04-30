@@ -1,15 +1,20 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { SidebarProvider, SidebarInset } from './components/ui/sidebar';
 import AppSidebar from './components/app-sidebar';
-import AppSidebarNav from './components/app-sidebar-nav'; // Adjust the import path if needed
-import { Heading } from "@/components/ui/heading";
-import Dashboard from './pages/Dashboard'; // Adjust the path
-import ChatBot from './pages/GptChatPage';
-import DoctorAppointmentForm from './pages/doctor-connect'; // Correct the path
+import AppSidebarNav from './components/app-sidebar-nav';
 import ChatBotIcon from './components/ChatBotIcon';
-import SymptomPrediction from './pages/symptom-checker'; // Adjust the path
+
+import Dashboard from './pages/Dashboard';
+import ChatBot from './pages/GptChatPage';
+import DoctorAppointmentForm from './pages/doctor-connect';
+import SymptomPrediction from './pages/symptom-checker';
 import Home from './pages/Home';
-const App = () => {
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
+
+import ProtectedRoute from './auth/ProtectedRoute';
+
+const App: React.FC = () => {
   return (
     <Router>
       <SidebarProvider>
@@ -19,10 +24,28 @@ const App = () => {
           <div className="p-4 lg:p-6">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/chatbot" element={<ChatBot />} />
-              <Route path="/doctor-connect" element={<DoctorAppointmentForm />} />
-              <Route path="/symptom-checker" element={<SymptomPrediction />} />
+              <Route path="/signin" element={<SignIn />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/dashboard" element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              } />
+              <Route path="/chatbot" element={
+                <ProtectedRoute>
+                  <ChatBot />
+                </ProtectedRoute>
+              } />
+              <Route path="/doctor-connect" element={
+                <ProtectedRoute>
+                  <DoctorAppointmentForm />
+                </ProtectedRoute>
+              } />
+              <Route path="/symptom-checker" element={
+                <ProtectedRoute>
+                  <SymptomPrediction />
+                </ProtectedRoute>
+              } />
             </Routes>
           </div>
           <ChatBotIcon />
@@ -30,6 +53,6 @@ const App = () => {
       </SidebarProvider>
     </Router>
   );
-}
+};
 
 export default App;
