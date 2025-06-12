@@ -37,20 +37,14 @@ type CustomMenuItemProps = {
   href?: string;
 };
 
-const CustomMenuItem = ({ children, onClick, href }: CustomMenuItemProps) => {
-  if (href) {
-    return (
-      <Menu.Item href={href}>
+const CustomMenuItem = ({ children, onClick }: CustomMenuItemProps) => {
+  return (
+    <Menu.Item>
+      <button onClick={onClick} className="w-full text-left">
         {children}
-      </Menu.Item>
-    );
-  } else {
-    return (
-       <Menu.Item onSelect={onClick}> {/* Use onSelect instead of onClick */}
-        {children}
-      </Menu.Item>
-    );
-  }
+      </button>
+    </Menu.Item>
+  );
 };
 
 export default function AppSidebar(props) {
@@ -93,10 +87,7 @@ export default function AppSidebar(props) {
               <IconRobot />
               <SidebarLabel>ChatBot</SidebarLabel>
             </SidebarItem>
-            <SidebarItem href="/settings" tooltip="Settings">
-              <IconSettings />
-              <SidebarLabel>Settings</SidebarLabel>
-            </SidebarItem>
+            
           </SidebarSection>
         </SidebarSectionGroup>
       </SidebarContent>

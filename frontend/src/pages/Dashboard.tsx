@@ -78,12 +78,12 @@ const Dashboard = () => {
     const now = new Date();
     let fromDate;
 
-    if (range === "24h") {
-      fromDate = new Date(now.getTime() - 24 * 60 * 60 * 1000); // last 24 hours
-    } else if (range === "15d") {
-      fromDate = new Date(now.getTime() - 15 * 24 * 60 * 60 * 1000); // last 15 days
+    if (range === "60d") {
+      fromDate = new Date(now.getTime() - 60 * 24 * 60 * 60 * 1000); // last 24 hours
+    } else if (range === "90d") {
+      fromDate = new Date(now.getTime() - 90 * 24 * 60 * 60 * 1000); // last 15 days
     } else {
-      fromDate = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000); // last 30 days
+      fromDate = new Date(now.getTime() - 120 * 24 * 60 * 60 * 1000); // last 30 days
     }
 
     console.log("Filtering data from:", fromDate); // Log the fromDate
@@ -326,13 +326,13 @@ const Dashboard = () => {
       <Popover className="z-50 mt-2 border bg-muted rounded-md shadow-lg">
         <ListBox className="flex flex-row gap-2 px-2 py-2">
           <DropdownItem id="24h" className="whitespace-nowrap">
-            24 Hours
+            60 Days
           </DropdownItem>
           <DropdownItem id="15d" className="whitespace-nowrap">
-            15 Days
+            90 Days
           </DropdownItem>
           <DropdownItem id="30d" className="whitespace-nowrap">
-            30 Days
+            120 Days
           </DropdownItem>
         </ListBox>
       </Popover>
