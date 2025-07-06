@@ -12,7 +12,7 @@ app = FastAPI()
 # Enable CORS (update origin if needed)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # Make sure the frontend URL is correct
+    allow_origins=["https://medtrack-world.vercel.app/"], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
