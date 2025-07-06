@@ -13,8 +13,8 @@ const app = express(); // Initialize Express app
 
 // Middleware
 app.use(cors({
-  origin: "http://localhost:5173", // Allow frontend URL
-  credentials: true, // Required for cookies & authentication
+  origin: "https://medtrack-world.vercel.app",
+  credentials: true, 
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -24,7 +24,7 @@ app.post("/api/ml-analysis", async (req, res) => {
     const symptoms = req.body;
     console.log("Received in /api/ml-analysis:", symptoms);
 
-    const response = await axios.post("http://localhost:5001/predict", symptoms);
+    const response = await axios.post("https://healthcare-typescript-1.onrender.com/predict", symptoms);
     console.log("Response from ML server:", response.data);
 
     res.json({ prediction: response.data.prediction });
