@@ -24,7 +24,7 @@ app.post("/api/ml-analysis", async (req, res) => {
     const symptoms = req.body;
     console.log("Received in /api/ml-analysis:", symptoms);
 
-    const response = await axios.post("https://healthcare-typescript.onrender.com/predict", symptoms);
+    const response = await axios.post("https://healthcare-typescript-1.onrender.com/predict", symptoms);
     console.log("Response from ML server:", response.data);
 
     res.json({ prediction: response.data.prediction });
