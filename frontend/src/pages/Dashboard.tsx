@@ -55,7 +55,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/sensors")
+      .get("https://healthcare-typescript.onrender.com/api/sensors")
       .then((response) => {
         setSensorData(response.data);
         setLoading(false);
