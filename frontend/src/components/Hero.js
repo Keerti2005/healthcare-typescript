@@ -1,0 +1,10 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Button } from "@/components/ui/button";
+import { ArrowDown } from "lucide-react";
+const Hero = () => {
+    const scrollToFeatures = () => {
+        document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
+    };
+    return (_jsxs("div", { className: "relative min-h-screen flex items-center justify-center overflow-hidden", children: [_jsx("div", { className: "absolute inset-0 bg-gradient-to-b from-primary/5 via-black to-black" }), _jsx("div", { className: "absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/10 via-black to-black" }), _jsxs("div", { className: "relative z-10 container mx-auto px-6 py-12 text-center", children: [" ", _jsxs("div", { className: "space-y-6 max-w-4xl mx-auto", children: [_jsxs("h1", { className: "text-5xl md:text-7xl font-bold tracking-tight text-white animate-fade-in mt-[-3rem]", children: [_jsx("span", { className: "block", children: "Take Control of Your" }), _jsx("span", { className: "block text-primary", children: "Health Journey" })] }), _jsx("p", { className: "text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in [animation-delay:200ms]", children: "Track medications, manage appointments, and monitor your health metrics all in one secure platform." }), _jsxs("div", { className: "flex flex-col sm:flex-row gap-4 justify-center items-center mt-6 animate-fade-in [animation-delay:400ms]", children: [" ", _jsx(Button, { size: "large", className: "bg-primary hover:bg-primary/90 text-white min-w-[200px]", children: "Start Free Trial" }), _jsx(Button, { size: "large", className: "border-gray-600 text-gray-300 hover:bg-gray-800 min-w-[200px]", children: "Watch Demo" })] })] }), _jsx("button", { onClick: scrollToFeatures, className: "absolute bottom-4 left-1/2 transform -translate-x-1/2 text-gray-400 hover:text-white transition-colors animate-bounce", "aria-label": "Scroll to features", children: _jsx(ArrowDown, { size: 32 }) })] })] }));
+};
+export default Hero;

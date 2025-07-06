@@ -1,0 +1,6 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Button } from "@/components/ui/button";
+const CallToAction = () => {
+    return (_jsxs("div", { className: "bg-black py-16 sm:py-20 relative", children: [_jsx("div", { className: "absolute inset-0 bg-gradient-to-b from-black via-primary/5 to-black" }), _jsx("div", { className: "relative mx-auto max-w-7xl px-6 large:px-8", children: _jsxs("div", { className: "mx-auto max-w-3xl text-center", children: [_jsx("h2", { className: "text-3xl font-bold tracking-tight text-white sm:text-4xl bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent", children: "Ready to Transform Your Health Management?" }), _jsx("p", { className: "mt-6 text-large leading-8 text-gray-400 mb-10", children: "Join thousands of users who have already taken control of their health journey with MedTrack." }), _jsxs("div", { className: "flex flex-col sm:flex-row gap-4 justify-center", children: [_jsx(Button, { size: "large", className: "bg-primary hover:bg-primary/90 text-white min-w-[200px]", children: "Get Started Now" }), _jsx(Button, { size: "large", className: "border-gray-600 text-gray-300 hover:bg-gray-800 min-w-[200px]", children: "Schedule Demo" })] })] }) })] }));
+};
+export default CallToAction;

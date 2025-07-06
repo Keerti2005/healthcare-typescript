@@ -27,27 +27,33 @@ import {
   IconRobot,
 } from "@intentui/icons";
 
-import { useAuth } from "@/auth/auth-context"; // custom hook for auth
+import { useAuth } from "@/auth/auth-context";
 import { twMerge } from "tailwind-merge";
+import React from "react";
 
-// Custom MenuItem component to handle onClick
+// ✅ FIXED: CustomMenuItem no longer wraps <button> inside Menu.Item
 type CustomMenuItemProps = {
   children: React.ReactNode;
   onClick?: () => void;
-  href?: string;
 };
 
 const CustomMenuItem = ({ children, onClick }: CustomMenuItemProps) => {
   return (
     <Menu.Item>
-      <button onClick={onClick} className="w-full text-left">
+      <div
+        onClick={onClick}
+        className="w-full cursor-pointer text-left flex items-center gap-2 px-2 py-1 hover:bg-muted rounded"
+        role="menuitem"
+        tabIndex={0}
+      >
         {children}
-      </button>
+      </div>
     </Menu.Item>
   );
 };
 
-export default function AppSidebar(props) {
+
+export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
   const { state } = useSidebar();
   const { user, logout } = useAuth();
 
@@ -87,7 +93,6 @@ export default function AppSidebar(props) {
               <IconRobot />
               <SidebarLabel>ChatBot</SidebarLabel>
             </SidebarItem>
-            
           </SidebarSection>
         </SidebarSectionGroup>
       </SidebarContent>
@@ -131,14 +136,15 @@ export default function AppSidebar(props) {
               <IconSettings />
               Settings
             </Menu.Item>
-            
+
             <Menu.Separator />
             <Menu.Item href="/support">
               <IconHeadphones />
               Customer Support
             </Menu.Item>
             <Menu.Separator />
-            
+
+            {/* ✅ Fixed: no nested <button> */}
             <CustomMenuItem onClick={logout}>
               <IconLogout />
               Log out
