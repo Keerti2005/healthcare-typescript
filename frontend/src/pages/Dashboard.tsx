@@ -255,7 +255,8 @@ const Dashboard = () => {
         <Card.Header title="Blood Pressure Analysis" description="Monthly Systolic & Diastolic" className="items-center pb-4" />
         <Card.Content>
           <Chart config={{ systolic: { label: "Systolic", color: "var(--chart-1)" }, diastolic: { label: "Diastolic", color: "oklch(0.457 0.24 277.023)" } }}>
-            <AreaChart data={bloodPressureData} margin={{ left: 12, right: 12 }}>
+            <AreaChart data={bloodPressureData} width={350} height={250} margin={{ left: 12, right: 12 }}>
+
               <CartesianGrid vertical={false} />
               <XAxis dataKey="month" tickFormatter={(v: string) => v.slice(0, 3)} />
               <ChartTooltip content={<ChartTooltipContent />} />
