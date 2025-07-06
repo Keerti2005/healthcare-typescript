@@ -4,7 +4,6 @@ import { PythonShell } from 'python-shell';
 const router = express.Router();
 
 
-// Store Multiple Sensor Data Entries
 router.post("/add", async (req, res) => {
   try {
     const dataArray = req.body;
@@ -36,10 +35,14 @@ router.post("/add", async (req, res) => {
   }
 });
 
-// Get All Sensor Data
 router.get("/", async (req, res) => {
-  const data = await SensorData.find().sort({ timestamp: -1 });
-  res.json(data);
+  try {
+    const data = await SensorData.find().sort({ timestamp: -1 });
+    res.json(data);
+  } catch (error) {
+    console.error("Error fetching sensor data:", error);
+    res.status(500).json({ error: "Failed to fetch sensor data" });
+  }
 });
 
 export default router;
