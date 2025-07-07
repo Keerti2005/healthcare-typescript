@@ -41,7 +41,7 @@ const SymptomPrediction: React.FC = () => {
     setPrediction(null);
     try {
       const parsedSymptoms = parseSymptoms(symptomsInput);
-const res = await axios.post("https://healthcare-typescript.onrender.com/predict", parsedSymptoms);
+const res = await axios.post("https://healthcare-typescript-1.onrender.com/predict", parsedSymptoms);
       setPrediction(res.data.prediction);
       setPreventiveMeasures(res.data.preventive_measures);
       setRemedies(res.data.remedial_measures);
