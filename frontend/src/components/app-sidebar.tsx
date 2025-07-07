@@ -132,10 +132,7 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
               <IconDashboard />
               Dashboard
             </Menu.Item>
-            <Menu.Item href="/settings">
-              <IconSettings />
-              Settings
-            </Menu.Item>
+            
 
             <Menu.Separator />
             <Menu.Item href="/support">

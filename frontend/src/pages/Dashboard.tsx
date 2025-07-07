@@ -252,9 +252,19 @@ const Dashboard = () => {
 
       {/* Blood Pressure */}
       <Card className="mt-6">
-  <Card.Header title="Blood Pressure Analysis" description="Monthly Systolic & Diastolic" className="items-center pb-4" />
-  <Card.Content>
-    <Chart config={{ systolic: { label: "Systolic", color: "var(--chart-1)" }, diastolic: { label: "Diastolic", color: "oklch(0.457 0.24 277.023)" } }}>
+  <Card.Header 
+    title="Blood Pressure Analysis" 
+    description="Monthly Systolic & Diastolic" 
+    className="items-center pb-4" 
+  />
+  {/* Add max-w and mx-auto to Card.Content to control width */}
+  <Card.Content className="w-full max-w-3xl mx-auto">
+    <Chart
+      config={{
+        systolic: { label: "Systolic", color: "var(--chart-1)" },
+        diastolic: { label: "Diastolic", color: "oklch(0.457 0.24 277.023)" },
+      }}
+    >
       <ResponsiveContainer width="100%" height={250}>
         <AreaChart data={bloodPressureData} margin={{ left: 12, right: 12 }}>
           <CartesianGrid vertical={false} />
@@ -270,13 +280,26 @@ const Dashboard = () => {
               <stop offset="95%" stopColor="oklch(0.457 0.24 277.023)" stopOpacity={0.1} />
             </linearGradient>
           </defs>
-          <Area dataKey="systolic" type="natural" fill="url(#fillSystolic)" stroke="oklch(0.457 0.24 277.023)" stackId="a" />
-          <Area dataKey="diastolic" type="natural" fill="url(#fillDiastolic)" stroke="#9b59b6" stackId="a" />
+          <Area
+            dataKey="systolic"
+            type="natural"
+            fill="url(#fillSystolic)"
+            stroke="oklch(0.457 0.24 277.023)"
+            stackId="a"
+          />
+          <Area
+            dataKey="diastolic"
+            type="natural"
+            fill="url(#fillDiastolic)"
+            stroke="#9b59b6"
+            stackId="a"
+          />
         </AreaChart>
       </ResponsiveContainer>
     </Chart>
   </Card.Content>
 </Card>
+
       <div className="flex justify-between gap-6 mt-6">
         {/* Body Temperature */}
         <Card className="w-1/2">
