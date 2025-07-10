@@ -38,7 +38,7 @@ class SymptomInput(BaseModel):
     Diarrhea: int
 @app.get("/")
 def root():
-    return {"message": "Backend is running! 👍"}
+    return {"message": "Backend is running"}
 @app.post("/predict")
 def predict(symptoms: SymptomInput):
     try:
