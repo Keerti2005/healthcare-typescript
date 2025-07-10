@@ -7,17 +7,20 @@ import SensorData from "./models/SensorData.js";
 import sensorRoutes from "./routes/sensorRoutes.js";
 import appointmentRoutes from "./routes/appointmentRoutes.js";
 
-dotenv.config(); // Load environment variables
+dotenv.config();
 
-const app = express(); // Initialize Express app
+const app = express();
 
-// Middleware
 app.use(cors({
   origin: "https://medtrack-world.vercel.app",
   credentials: true, 
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.get("/", (req, res) => {
+  res.status(200).send("Backend is running");
+});
 
 app.post("/api/ml-analysis", async (req, res) => {
   try {
@@ -38,8 +41,6 @@ app.post("/api/ml-analysis", async (req, res) => {
   }
 });
 
-
-// Routes
 app.use("/api/sensors", sensorRoutes);
 app.use("/api/appointments", appointmentRoutes);
 
