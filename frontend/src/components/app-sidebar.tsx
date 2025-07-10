@@ -81,6 +81,10 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
               <IconDashboard />
               <SidebarLabel>Dashboard</SidebarLabel>
             </SidebarItem>
+            <SidebarItem href="/chatbot" tooltip="ChatBot">
+              <IconRobot />
+              <SidebarLabel>ChatBot</SidebarLabel>
+            </SidebarItem>
             <SidebarItem href="/symptom-checker" tooltip="Symptom Checker">
               <IconHeartBeat />
               <SidebarLabel>Symptom Checker</SidebarLabel>
@@ -89,10 +93,7 @@ export default function AppSidebar(props: React.ComponentProps<typeof Sidebar>) 
               <IconFileText />
               <SidebarLabel>Doctor Connect</SidebarLabel>
             </SidebarItem>
-            <SidebarItem href="/chatbot" tooltip="ChatBot">
-              <IconRobot />
-              <SidebarLabel>ChatBot</SidebarLabel>
-            </SidebarItem>
+            
           </SidebarSection>
         </SidebarSectionGroup>
       </SidebarContent>
