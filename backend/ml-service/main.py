@@ -36,9 +36,11 @@ class SymptomInput(BaseModel):
     Nausea: int
     Vomiting: int
     Diarrhea: int
+
 @app.get("/")
 def root():
     return {"message": "Backend is running"}
+
 @app.post("/predict")
 def predict(symptoms: SymptomInput):
     try:
@@ -72,3 +74,9 @@ def predict(symptoms: SymptomInput):
     except Exception as e:
         print(f"Prediction error: {e}")
         raise HTTPException(status_code=500, detail="Error during prediction")
+
+# Add this block at the end
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 10000))  # Use Render's assigned port or default for local
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
